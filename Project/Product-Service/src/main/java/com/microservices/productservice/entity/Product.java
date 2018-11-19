@@ -24,7 +24,6 @@ public class Product implements Serializable {
     private boolean active;
 
     @NotNull
-    @Column
     @ManyToOne
     private Category category;
 
