@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Entity(name = "Product")
 public class Product implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "productId")
     private Long id;
 
@@ -17,6 +17,12 @@ public class Product implements Serializable {
 
     @NotNull
     private Long price;
+
+    private String author;
+
+    @Column(name = "description")
+    @Lob
+    private String desc;
 
     private String productPicture;
 
@@ -27,9 +33,11 @@ public class Product implements Serializable {
     @ManyToOne
     private Category category;
 
-    public Product(@NotNull String productName, @NotNull Long price, String productPicture, @NotNull boolean active, Category category) {
+    public Product(@NotNull String productName, @NotNull Long price, String author, String desc, String productPicture, @NotNull boolean active, @NotNull Category category) {
         this.productName = productName;
         this.price = price;
+        this.author = author;
+        this.desc = desc;
         this.productPicture = productPicture;
         this.active = active;
         this.category = category;
@@ -60,6 +68,22 @@ public class Product implements Serializable {
 
     public void setPrice(Long price) {
         this.price = price;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public String getProductPicture() {

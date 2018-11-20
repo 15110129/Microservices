@@ -12,6 +12,10 @@ public class ProductDTO implements Serializable {
 
     private Long price;
 
+    private String author;
+
+    private String desc;
+
     private String productPicture;
 
     private boolean active;
@@ -19,11 +23,13 @@ public class ProductDTO implements Serializable {
     public ProductDTO() {
     }
 
-    public ProductDTO(Long id, Long idCategory, String productName, Long price, String productPicture, boolean active) {
+    public ProductDTO(Long id, Long idCategory, String productName, Long price, String author, String desc, String productPicture, boolean active) {
         this.id = id;
         this.idCategory = idCategory;
         this.productName = productName;
         this.price = price;
+        this.author = author;
+        this.desc = desc;
         this.productPicture = productPicture;
         this.active = active;
     }
@@ -58,6 +64,22 @@ public class ProductDTO implements Serializable {
 
     public void setPrice(Long price) {
         this.price = price;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public String getProductPicture() {
