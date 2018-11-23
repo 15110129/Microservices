@@ -9,7 +9,7 @@ import java.util.List;
 @Entity(name = "OrderEntity")
 public class OrderEntity implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 

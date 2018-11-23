@@ -1,7 +1,5 @@
 package com.microservices.productservice.model;
 
-import lombok.*;
-
 import java.io.Serializable;
 
 public class CategoryDTO implements Serializable {

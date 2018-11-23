@@ -1,6 +1,5 @@
 package com.microservices.productservice.controller;
 
-import com.microservices.productservice.entity.Category;
 import com.microservices.productservice.model.CategoryDTO;
 import com.microservices.productservice.service.CategoryServiceImpl;
 import com.microservices.productservice.util.ApiResponseBuilder;

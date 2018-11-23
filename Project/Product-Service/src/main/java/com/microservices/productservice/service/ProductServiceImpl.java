@@ -10,7 +10,6 @@ import com.microservices.productservice.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -30,7 +29,6 @@ public class ProductServiceImpl implements ProductService {
         List<ProductDTO> productDTOS = new ArrayList<>();
         for (Product product : products) {
             ProductDTO productDTO = ProductMapper.toProductDTO(product);
-            System.out.println(productDTO.getProductName());
             productDTOS.add(productDTO);
         }
         return productDTOS;
@@ -46,6 +44,17 @@ public class ProductServiceImpl implements ProductService {
         for (Product product : products)
             productDTOS.add(ProductMapper.toProductDTO(product));
 
+        return productDTOS;
+    }
+
+    @Override
+    public List<ProductDTO> findProductByName(String name) {
+        List<Product> products = productRepository.findProductsByProductNameLike(name);
+        List<ProductDTO> productDTOS = new ArrayList<>();
+        for (Product product : products){
+            ProductDTO productDTO = ProductMapper.toProductDTO(product);
+            productDTOS.add(productDTO);
+        }
         return productDTOS;
     }
 

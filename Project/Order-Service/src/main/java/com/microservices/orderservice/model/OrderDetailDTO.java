@@ -1,7 +1,5 @@
 package com.microservices.orderservice.model;
 
-import com.microservices.orderservice.entity.OrderEntity;
-
 public class OrderDetailDTO {
     private Long id;
 

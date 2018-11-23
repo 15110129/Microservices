@@ -1,6 +1,5 @@
 package com.microservices.productservice.controller;
 
-import com.microservices.productservice.entity.Product;
 import com.microservices.productservice.model.ProductDTO;
 import com.microservices.productservice.service.ProductServiceImpl;
 import com.microservices.productservice.util.ApiResponseBuilder;
@@ -20,6 +19,11 @@ public class ProductController {
         return ApiResponseBuilder.buildContainsData("List Product", productService.findAllProduct());
     }
 
+    @GetMapping("/name/{name}")
+    public Map<String, ?> findPRoductByName(@PathVariable String name) {
+        return ApiResponseBuilder.buildContainsData("List Product of name: " + name, productService.findProductByName(name));
+    }
+
     @GetMapping("/category/{idCategory}")
     public Map<String, ?> findProductByCategory(@PathVariable Long idCategory) {
         return ApiResponseBuilder.buildContainsData("List Product of Category " + idCategory, productService.findProductByCategory(idCategory));
@@ -30,7 +34,7 @@ public class ProductController {
         return ApiResponseBuilder.buildContainsData("Product id " + id, productService.findProductById(id));
     }
 
-    @PostMapping
+    @PostMapping()
     public Map<String, ?> insertProduct(@RequestBody ProductDTO productDTO) {
         ProductDTO savedProductDTO = productService.insertProduct(productDTO);
         return ApiResponseBuilder.buildContainsData(String.format("Inserted Product id " + savedProductDTO.getId()), savedProductDTO);
