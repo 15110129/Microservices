@@ -47,6 +47,12 @@ public class OrderDetailServiceImpl implements OrderDetailService {
             orderDetail.get().setOrder(orderEntity.get());
 
             orderDetailDTO = OrderDetailMapper.toOrderDetailDTO(orderDetailRepository.save(orderDetail.get()));
+            List<OrderDetail> orderDetails = orderDetailRepository.findOrderDetailByOrder(orderEntity.get());
+            Double a = 0d;
+            for (OrderDetail orderDetail1 : orderDetails)
+                a = a + orderDetail1.getUnitPrice() * orderDetail1.getQuantity();
+            orderEntity.get().setTotal(a);
+            orderRepository.save(orderEntity.get());
             return orderDetailDTO;
         } else return null;
     }
@@ -57,7 +63,12 @@ public class OrderDetailServiceImpl implements OrderDetailService {
         Optional<OrderDetail> orderDetail = orderDetailRepository.findOrderDetailByOrderAndIdProduct(orderEntity.get(), dataOrderDetailDTO.getIdProduct());
         orderDetail.get().setQuantity(dataOrderDetailDTO.getQuantity());
         dataOrderDetailDTO = OrderDetailMapper.toOrderDetailDTO(orderDetailRepository.save(orderDetail.get()));
-
+        List<OrderDetail> orderDetails = orderDetailRepository.findOrderDetailByOrder(orderEntity.get());
+        Double a = 0d;
+        for (OrderDetail orderDetail1 : orderDetails)
+            a = a + orderDetail1.getUnitPrice() * orderDetail1.getQuantity();
+        orderEntity.get().setTotal(a);
+        orderRepository.save(orderEntity.get());
         return dataOrderDetailDTO;
     }
 

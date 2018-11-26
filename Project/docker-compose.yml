@@ -1,0 +1,50 @@
+mysql:
+  image: mysql:5.6
+  ports:
+  - "3306:3306"
+  environment:
+  - "MYSQL_ROOT_PASSWORD=password"
+  - "MYSQL_DATABASE=bookstore"
+  - "MYSQL_USER=sa"
+  - "MYSQL_PASSWORD=password"
+
+eureka:
+  build: ./Eureka-Server
+  ports:
+  - "8761:8761"
+
+review-service:
+  build: ./Review-Service
+  ports:
+  - "8080:8080"
+  links:
+  - "mysql"
+  - "eureka"
+  
+product-service:
+  build: ./Product-Service
+  ports:
+  - "8081:8080"
+  links:
+  - "mysql"
+  - "eureka"
+  
+order-service:
+  build: ./Order-Service
+  ports:
+  - "8082:8080"
+  links:
+  - "mysql"
+  - "eureka"
+  
+zuul-gateway:
+  build: ./zuul-gateway
+  ports:
+  - "8762:8762"
+  links:
+  - "mysql"
+  - "eureka"
+  - "review-service"
+  - "product-service"
+  - "order-service"
+  

@@ -57,7 +57,8 @@ public class OrderServiceImpl implements OrderService {
             throw new OrderNotFoundException("Object is null");
         OrderEntity orderEntity;
         orderEntity = OrderMapper.toOrderEntity(orderDTO);
-        orderEntity.setOrdered(false);
+//        orderEntity.setOrdered(false);
+        orderEntity.setTotal(0d);
         orderEntity.setDateTime(LocalDateTime.now());
         orderDTO = OrderMapper.toOrderDTO(orderRepository.save(orderEntity));
         return orderDTO;
@@ -71,11 +72,6 @@ public class OrderServiceImpl implements OrderService {
         dataOrderDTO.setId(id);
         orderEntity = Optional.of(OrderMapper.toOrderEntity(dataOrderDTO));
         orderEntity.get().setDateTime(LocalDateTime.now());
-        List<OrderDetail> orderDetails = orderDetailRepository.findOrderDetailByOrder(orderEntity.get());
-        Double a = 0d;
-        for (OrderDetail orderDetail : orderDetails)
-            a = a + orderDetail.getUnitPrice() * orderDetail.getQuantity();
-        orderEntity.get().setTotal(a);
         orderRepository.save(orderEntity.get());
         return dataOrderDTO;
     }

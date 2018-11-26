@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/review")
 public class ReviewController {
     @Autowired
     ReviewServiceImpl reviewService;
@@ -19,10 +18,10 @@ public class ReviewController {
         return ApiResponseBuilder.buildContainsData("List Review of Product id " + id, reviewService.findReviewByProductId(id));
     }
 
-    @GetMapping("/{id}")
-    public Map<String, ?> findReviewById(@PathVariable Long id) {
-        return ApiResponseBuilder.buildContainsData("Review id " + id + " not existed", reviewService.findReviewById(id));
-    }
+//    @GetMapping("/{id}")
+//    public Map<String, ?> findReviewById(@PathVariable Long id) {
+//        return ApiResponseBuilder.buildContainsData("Review id " + id + " not existed", reviewService.findReviewById(id));
+//    }
 
     @PostMapping
     public Map<String, ?> insertReview(@RequestBody ReviewDTO reviewDTO) {

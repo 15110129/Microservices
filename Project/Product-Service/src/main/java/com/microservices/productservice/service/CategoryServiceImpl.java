@@ -42,8 +42,6 @@ public class CategoryServiceImpl implements CategoryService {
         if (categoryDTO == null)
             throw new ResourceNotFoundException("Object is null");
         Category category = new Category();
-        System.out.println(categoryDTO.getCategoryName());
-        System.out.println(categoryDTO.isActive());
         category.setCategoryName(categoryDTO.getCategoryName());
         category.setActive(categoryDTO.isActive());
         categoryDTO = CategoryMapper.toCategoryDTO(categoryRepository.save(category));

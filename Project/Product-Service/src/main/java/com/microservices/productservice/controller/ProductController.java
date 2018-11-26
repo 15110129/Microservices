@@ -19,10 +19,10 @@ public class ProductController {
         return ApiResponseBuilder.buildContainsData("List Product", productService.findAllProduct());
     }
 
-    @GetMapping("/name/{name}")
-    public Map<String, ?> findPRoductByName(@PathVariable String name) {
-        return ApiResponseBuilder.buildContainsData("List Product of name: " + name, productService.findProductByName(name));
-    }
+//    @GetMapping("/name/{name}")
+//    public Map<String, ?> findPRoductByName(@PathVariable String name) {
+//        return ApiResponseBuilder.buildContainsData("List Product of name: " + name, productService.findProductByName(name));
+//    }
 
     @GetMapping("/category/{idCategory}")
     public Map<String, ?> findProductByCategory(@PathVariable Long idCategory) {
