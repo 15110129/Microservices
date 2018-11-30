@@ -1,0 +1,33 @@
+<div class="container-fruid top-bar fixed-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2 navbar-brand">
+        <a routerLink="/home" id="brand">BookStore</a>
+      </div>
+      <div class="col-lg-5 nav-bar">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/home">Trang chủ</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown">Loại sách</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" *ngFor="let category of categories" routerLink="/category/{{category.categoryId}}" routerLinkActive="active-link">{{category.categoryName}}</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-2">
+        <a routerLink="/cart"><i class="fa fa-shopping-cart cart"></i></a>
+      </div>
+      <div class="signin">
+        <a routerLink="/signup" class="login" style="border-right: none;">
+          Đăng ký
+        </a>
+        <a routerLink="/signin" class="login">
+          Đăng nhập
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

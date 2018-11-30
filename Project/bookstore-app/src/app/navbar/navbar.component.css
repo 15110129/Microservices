@@ -1,0 +1,55 @@
+body {
+  font-family: 'Lato', 'Open Sans', sans-serif;
+}
+
+.top-bar {
+  background-color: #1976d2;
+  color: white;
+  padding-top: 5px;
+}
+
+li .nav-link {
+  color: white;
+  font-weight: bold;
+}
+
+.login {
+  border-right: 1px solid #fff;
+  margin-top: 30px;
+  padding: 0 10px;
+  line-height: 10px;
+  float: right;
+  color: white;
+  font-weight: bold;
+}
+
+.signin {
+  float: right;
+  width: auto;
+  margin-left: 75px;
+}
+
+#brand {
+  font-size: 40px;
+  color: white;
+}
+
+#brand:hover {
+  text-decoration: none;
+}
+
+.nav-bar {
+  padding-top: 18px;
+}
+
+.dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
+.cart {
+  padding-top: 18px;
+  font-size: 30px;
+  float: right;
+  /*margin-right: -50px;*/
+  color: white;
+}
