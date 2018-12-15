@@ -67,3 +67,14 @@
 .cart-padding {
   padding-bottom: 30px;
 }
+
+.button {
+  background-color: white;
+  border: none;
+  color: red;
+  font-size: 20px;
+}
+
+.button:hover {
+  background-color: #71b5f2;
+}

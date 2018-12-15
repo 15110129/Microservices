@@ -8,26 +8,19 @@
           <p>Giỏ hàng</p>
         </div>
       </div>
-      <div class="row cart-item">
+      <div class="row cart-item" *ngFor="let product of products">
         <div class="col-lg-4">
-          <img src="https://cdn-images-1.medium.com/max/1250/1*vL3bRLnL1sGaZkyxazimGg.png" width="200px" height="200px">
+          <img src={{product.productPicture}} width="200px" height="200px">
         </div>
-        <div class="col-lg-8 detail">
-          <strong>C C++ Cơ bản</strong>
-          <p>Tác giả: ĐHT</p>
-          <p>Đơn giá: 50000 VNĐ</p>
-          <p>Quantity: <input type="number" name="quantity" min="1" max="10" value="1"></p>
+        <div class="col-lg-7 detail">
+          <strong>{{product.productName}}</strong>
+          <p>Tác giả: {{product.author}}</p>
+          <p>Đơn giá: {{product.price | currency: "VND"}}</p>
+          <p>Quantity: <input type="number" name="quantity" min="1" max="10" [(ngModel)]="product.quantity"
+                              (click)="onClick(product)"></p>
         </div>
-      </div>
-      <div class="row cart-item">
-        <div class="col-lg-4">
-          <img src="https://cdn-images-1.medium.com/max/1250/1*vL3bRLnL1sGaZkyxazimGg.png" width="200px" height="200px">
-        </div>
-        <div class="col-lg-8 detail">
-          <strong>C C++ Cơ bản</strong>
-          <p>Tác giả: ĐHT</p>
-          <p>Đơn giá: 50000 VNĐ</p>
-          <p>Quantity: <input type="number" name="quantity" min="1" max="10" value="1"></p>
+        <div class="col-log-1">
+          <button class="button" (click)="delete(product)"><i class="fa fa-times"></i></button>
         </div>
       </div>
     </div>
@@ -52,7 +45,7 @@
             <option value="COD">COD</option>
             <option value="Paypal">Paypal</option>
           </select></p>
-          <p>TỔNG CỘNG:</p></div>
+          <p>TỔNG CỘNG:{{total | currency: "VND"}}</p></div>
       </div>
     </div>
   </div>

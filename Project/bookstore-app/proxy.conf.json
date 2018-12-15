@@ -1,5 +1,11 @@
 {
-  "/product/*":{
+  "/products/*":{
+    "target": "http://localhost:8762",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/review/*":{
     "target": "http://localhost:8762",
     "secure": false,
     "logLevel": "debug",

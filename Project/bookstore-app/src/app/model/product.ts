@@ -7,4 +7,5 @@ export class Product {
   desc: string;
   productPicture: string;
   active: boolean;
+  quantity: number;
 }

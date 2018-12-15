@@ -1,52 +1,40 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {CategoryService} from '../service/category.service';
 import {ProductService} from '../service/product.service';
+import {Location} from '@angular/common';
 import {Product} from '../model/product';
 import {OrderDetail} from '../model/orderdetail';
+import {ReviewService} from '../service/review.service';
 
 @Component({
-  selector: 'app-category-item',
-  templateUrl: './category-item.component.html',
-  styleUrls: ['./category-item.component.css']
+  selector: 'app-product-detail',
+  templateUrl: './product-detail.component.html',
+  styleUrls: ['./product-detail.component.css']
 })
-
-export class CategoryItemComponent implements OnInit {
-  products: any;
-  category: any;
+export class ProductDetailComponent implements OnInit {
+  product: any;
+  reviews: any;
 
   constructor(private route: ActivatedRoute,
               private productService: ProductService,
-              private categoryService: CategoryService) {
+              private reviewService: ReviewService) {
     route.params.subscribe(_ => {
-      this.getCategoryByIdCategory();
-      this.getProductByIdCategory();
+      this.getProductById();
+      this.getReview();
     });
   }
 
   ngOnInit() {
-    this.getCategoryByIdCategory();
-    this.getProductByIdCategory();
+    this.getProductById();
+    this.getReview();
   }
 
-  getCategoryByIdCategory(): void {
+  getProductById(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.categoryService.getCategory(id)
+    this.productService.getProductByIdProduct(id)
       .subscribe(res => {
         if (res.code === 1) {
-          this.category = res.data;
-          console.log(res.data);
-        }
-      });
-  }
-
-  getProductByIdCategory(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.productService.getProduct(id)
-      .subscribe(res => {
-        if (res.code === 1) {
-          this.products = res.data;
-          console.log(res.data);
+          this.product = res.data;
         }
       });
   }
@@ -70,5 +58,16 @@ export class CategoryItemComponent implements OnInit {
       orderDetail.quantity = quantity;
       localStorage.setItem(product.id.toString(), JSON.stringify(orderDetail));
     }
+  }
+
+  getReview(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.reviewService.getReview(id)
+      .subscribe(res => {
+        if (res.code === 1) {
+          this.reviews = res.data;
+          console.log(res.data);
+        }
+      });
   }
 }

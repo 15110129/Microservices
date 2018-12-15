@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  private productUrl = '/product/';
+  private productUrl = '/products/';
 
   constructor(private http: HttpClient) {
   }
@@ -20,4 +20,11 @@ export class ProductService {
     const url = `${this.productUrl + 'product/category'}/${id}`;
     return this.http.get<RestResponse>(url);
   }
+
+  getProductByIdProduct(id: number): Observable<RestResponse> {
+    const url = `${this.productUrl + 'product'}/${id}`;
+    console.log(url);
+    return this.http.get<RestResponse>(url);
+  }
+
 }

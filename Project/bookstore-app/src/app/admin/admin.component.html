@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+<div class="margintop"></div>
+<div class="container">
+  <div class="row create">
+    <div class="col-lg 12">
+      <button type="button" class="btn btn-success">Create</button>
+    </div>
+  </div>
+  <div class="row title">
+    <div class="col-lg-4">
+      <p>Tên sách</p>
+    </div>
+    <div class="col-lg-3">
+      <p>Tên tác giả</p>
+    </div>
+    <div class="col-lg-3">
+      <p>Giá tiền</p>
+    </div>
+    <div class="col-lg-1">
+      <p>Sửa</p>
+    </div>
+    <div class="col-lg-1">
+      <p>Xóa</p>
+    </div>
+  </div>
+  <div class="row item" *ngFor="let product of products">
+    <div class="col-lg-4">
+      <div class="row">
+        <div class="col-lg-2">
+          <img src={{product.productPicture}} width="60px" height="60px">
+        </div>
+        <div class="col-lg-10 justify-content-center align-self-center">
+            <p id="productname">{{product.productName}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="paddingtop">
+        <p id="paddingtop">{{product.author}}</p>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="paddingtop">
+        <p>{{product.price | currency: "VND"}}</p>
+      </div>
+    </div>
+    <div class="col-lg-1">
+      <div class="paddingtop">
+        <p>Sửa</p>
+      </div>
+    </div>
+    <div class="col-lg-1">
+      <div class="paddingtop">
+        <p>Xóa</p>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

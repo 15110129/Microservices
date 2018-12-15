@@ -4,23 +4,16 @@ mysql:
   - "3306:3306"
   environment:
   - "MYSQL_ROOT_PASSWORD=password"
-  - "MYSQL_DATABASE=bookstore"
   - "MYSQL_USER=sa"
   - "MYSQL_PASSWORD=password"
+  restart: always
 
 eureka:
   build: ./Eureka-Server
   ports:
   - "8761:8761"
+  restart: always
 
-review-service:
-  build: ./Review-Service
-  ports:
-  - "8080:8080"
-  links:
-  - "mysql"
-  - "eureka"
-  
 product-service:
   build: ./Product-Service
   ports:
@@ -28,15 +21,17 @@ product-service:
   links:
   - "mysql"
   - "eureka"
+  restart: always
   
-order-service:
-  build: ./Order-Service
+review-service:
+  build: ./Review-Service
   ports:
-  - "8082:8080"
+  - "8080:8080"
   links:
   - "mysql"
   - "eureka"
-  
+  restart: always
+
 zuul-gateway:
   build: ./zuul-gateway
   ports:
@@ -44,7 +39,7 @@ zuul-gateway:
   links:
   - "mysql"
   - "eureka"
-  - "review-service"
   - "product-service"
-  - "order-service"
+  - "review-service"
+  restart: always
   

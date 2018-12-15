@@ -42,3 +42,7 @@ a {
 .product {
   padding-bottom: 30px;
 }
+
+.user p{
+  font-size: 100px;
+}

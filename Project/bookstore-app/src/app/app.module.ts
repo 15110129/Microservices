@@ -13,6 +13,8 @@ import {CartComponent} from './cart/cart.component';
 import {ProductItemComponent} from './product-item/product-item.component';
 import {FooterComponent} from './footer/footer.component';
 import { CategoryItemComponent } from './category-item/category-item.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { CategoryItemComponent } from './category-item/category-item.component';
     CartComponent,
     ProductItemComponent,
     FooterComponent,
-    CategoryItemComponent
+    CategoryItemComponent,
+    ProductDetailComponent,
+    AdminComponent,
   ],
   imports: [
     FormsModule,

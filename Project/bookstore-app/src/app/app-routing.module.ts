@@ -5,8 +5,12 @@ import {RegisterComponent} from './register/register.component';
 import {ProductComponent} from './product/product.component';
 import {CartComponent} from './cart/cart.component';
 import {CategoryItemComponent} from './category-item/category-item.component';
+import {ProductDetailComponent} from './product-detail/product-detail.component';
+import {AdminComponent} from './admin/admin.component';
 
 const routes: Routes = [
+  {path: 'admin', component: AdminComponent},
+  {path: 'product/:id', component: ProductDetailComponent},
   {path: 'category/:id', component: CategoryItemComponent},
   {path: 'cart', component: CartComponent},
   {path: 'signup', component: RegisterComponent},

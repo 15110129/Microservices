@@ -18,9 +18,8 @@
             </div>
             <div class="text-center">
               <p>{{product.price | currency:"VND"}}</p>
-              <a href=""><p>{{product.productName}}</p></a>
-              <button class="button"><i class="fa fa-shopping-cart"></i></button>
-              <input type="hidden" value="3487">
+              <a routerLink="/product/{{product.id}}"><p>{{product.productName}}</p></a>
+              <button class="button" (click)="addLocalStorage(product)"><i class="fa fa-shopping-cart"></i></button>
             </div>
           </div>
         </div>
@@ -47,8 +46,8 @@
             </div>
             <div class="text-center">
               <p>{{product.price | currency:"VND"}}</p>
-              <a href=""><p>{{product.productName}}</p></a>
-              <button class="button"><i class="fa fa-shopping-cart"></i></button>
+              <a routerLink="/product/{{product.id}}"><p>{{product.productName}}</p></a>
+              <button class="button" (click)="addLocalStorage(product)"><i class="fa fa-shopping-cart"></i></button>
               <input type="hidden" value="3487">
             </div>
           </div>

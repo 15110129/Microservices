@@ -6,18 +6,14 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService {
-  private productUrl = '/products/';
+export class ReviewService {
+  private reviewURL = '/review/';
 
   constructor(private http: HttpClient) {
   }
 
-  getCategories(): Observable<RestResponse> {
-    return this.http.get<RestResponse>(this.productUrl + 'category');
-  }
-
-  getCategory(id: number): Observable<RestResponse> {
-    const url = `${this.productUrl + 'category'}/${id}`;
+  getReview(id: number): Observable<RestResponse> {
+    const url = `${this.reviewURL + 'product'}/${id}`;
     return this.http.get<RestResponse>(url);
   }
 }
