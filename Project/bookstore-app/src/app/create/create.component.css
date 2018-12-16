@@ -1,0 +1,29 @@
+.margintop {
+  margin-top: 100px;
+}
+
+.title {
+  border: 1px solid #1976d2;
+  background-color: #1976d2;
+  width: 100%;
+  margin: 30px 10px 0 10px;
+  padding: 10px 0 0 10px;
+  color: white;
+}
+
+.title p {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.input-group-text {
+  width: 103px;
+}
+
+.button {
+  margin-top: 30px;
+}
+
+.btn {
+  width: 66px;
+}

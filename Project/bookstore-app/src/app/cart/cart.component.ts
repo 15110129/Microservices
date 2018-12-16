@@ -24,10 +24,12 @@ export class CartComponent implements OnInit {
   }
 
   getListOrderDetail(): void {
+
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
       const value = JSON.parse(localStorage.getItem(key));
       const id = value.idProduct;
+      this.products = new Array();
       this.productService.getProductByIdProduct(id)
         .subscribe(res => {
           if (res.code === 1) {
@@ -56,8 +58,9 @@ export class CartComponent implements OnInit {
       this.total += value.unitPrice * value.quantity;
     }
   }
-
   delete(product: Product): void {
     localStorage.removeItem(product.id.toString());
+    this.getListOrderDetail();
+    this.totalPrice();
   }
 }

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {RestResponse} from '../model/RestResponse';
 import {Observable} from 'rxjs';
+import {Prod} from '../model/prod';
 
 @Injectable({
   providedIn: 'root'
@@ -27,4 +28,15 @@ export class ProductService {
     return this.http.get<RestResponse>(url);
   }
 
+  createProduct(prod: Prod): Observable<RestResponse> {
+    return this.http.post<RestResponse>(this.productUrl + 'product', prod);
+  }
+
+  updateProduct(id: number, prod: Prod): Observable<RestResponse> {
+    return this.http.put<RestResponse>(this.productUrl + 'product/' + id, prod);
+  }
+
+  deleteProductById(id: number): Observable<RestResponse> {
+    return this.http.delete<RestResponse>(this.productUrl + 'product/' + id);
+  }
 }

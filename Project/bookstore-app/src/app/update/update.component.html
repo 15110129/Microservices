@@ -1,0 +1,75 @@
+<app-navbar></app-navbar>
+<div class="margintop"></div>
+<div class="container" *ngIf="prod">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="row">
+        <div class="title">
+          <p>Thông Tin Sách</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Tên sách</span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="prod.productName" required="required">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Tác giả</span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="prod.author">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Hình ảnh</span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="prod.productPicture">
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Loại sách</span>
+              <select class="form-control" id="sel1" [(ngModel)]="prod.idCategory">
+                <option *ngFor="let category of categories" value={{category.categoryId}}>{{category.categoryName}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" style="width: 90.69px;">Giá tiền</span>
+            </div>
+            <input type="text" class="form-control" [(ngModel)]="prod.price" required pattern="[0-9]">
+          </div>
+        </div>
+        <div class="col-lg-6 d-flex justify-content-end">
+          <img *ngIf="prod.productPicture" [(src)]="prod.productPicture" width="150px" height="150px">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <angular-editor [(ngModel)]="prod.desc" [config]="config"></angular-editor>
+    </div>
+  </div>
+  <div class="row button">
+    <div class="col-lg-5"></div>
+    <div class="col-lg-1">
+      <button type="button" class="btn btn-primary" (click)="btnLuu()">Lưu</button>
+    </div>
+    <div class="col-lg-1">
+      <button type="button" class="btn btn-secondary" (click)="btnHuy()">Hủy</button>
+    </div>
+    <div class="col-lg-5"></div>
+  </div>
+</div>
+<app-footer></app-footer>
